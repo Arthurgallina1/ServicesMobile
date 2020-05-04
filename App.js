@@ -1,19 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StatusBar } from "react-native";
+import { PersistGate } from "react-redux";
+import "./src/config/ReactotronConfing";
+import { Provider } from "react-redux";
+
+import { store, persistor } from "./src/store";
+import Index from "./src/App";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      {/* <PersistGate persistor={persistor}> */}
+      <StatusBar barStyle="light-content" backgroundColor="#027d23" />
+      <Index />
+      {/* </PersistGate> */}
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
