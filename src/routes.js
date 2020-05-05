@@ -16,62 +16,63 @@ import Confirm from "./pages/New/Confirm";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 export default (isSigned = false) =>
-  createAppContainer(
-    createSwitchNavigator(
-      {
-        Sign: createSwitchNavigator({
-          SignIn,
-          SignUp,
-        }),
-        App: createBottomTabNavigator(
-          {
-            Dashboard,
-            New: {
-              //navega de uma tela pra outra mantendo as páginas na memoria (sendo possível voltar a pagina anterior)
-              screen: createStackNavigator(
-                {
-                  SelectProvider,
-                  SelectDate,
-                  Confirm,
-                },
-                {
-                  defaultNavigationOptions: {
-                    headerTransparent: true,
-                    headerTintColor: "#fff",
-                    headerLeftContainerStyle: {
-                      marginLeft: 20,
+    createAppContainer(
+        createSwitchNavigator(
+            {
+                Sign: createSwitchNavigator({
+                    SignIn,
+                    SignUp,
+                }),
+                App: createBottomTabNavigator(
+                    {
+                        Dashboard,
+                        New: {
+                            //navega de uma tela pra outra mantendo as páginas na memoria (sendo possível voltar a pagina anterior)
+                            screen: createStackNavigator(
+                                {
+                                    SelectProvider,
+                                    SelectDate,
+                                    Confirm,
+                                },
+                                {
+                                    defaultNavigationOptions: {
+                                        headerTransparent: true,
+                                        headerTintColor: "#fff",
+                                        headerLeftContainerStyle: {
+                                            marginLeft: 20,
+                                        },
+                                    },
+                                }
+                            ),
+                            navigationOptions: {
+                                tabBarVisible: false,
+                                tabBarLabel: "Agendar",
+                                tabBarIcon: (
+                                    <Icon
+                                        name='add-circle-outline'
+                                        size={20}
+                                        color='rgba(255,255,255, 0.6)'
+                                    />
+                                ),
+                            },
+                        },
+                        Profile,
                     },
-                  },
-                }
-              ),
-              navigationOptions: {
-                tabBarVisible: false,
-                tabBarLabel: "Agendar",
-                tabBarIcon: (
-                  <Icon
-                    name="add-circle-outline"
-                    size={20}
-                    color="rgba(255,255,255, 0.6)"
-                  />
+                    {
+                        resetOnBlur: true, //toda vez q sai da rota ela reseta, reseta o stack;
+                        tabBarOptions: {
+                            keyboardHidesTabBar: true,
+                            activeTintColor: "#fff",
+                            inactiveTintColor: "rgba(255,255,255, 0.6)",
+                            style: {
+                                backgroundColor: "#027d23",
+                            },
+                        },
+                    }
                 ),
-              },
             },
-            Profile,
-          },
-          {
-            tabBarOptions: {
-              keyboardHidesTabBar: true,
-              activeTintColor: "#fff",
-              inactiveTintColor: "rgba(255,255,255, 0.6)",
-              style: {
-                backgroundColor: "#027d23",
-              },
-            },
-          }
-        ),
-      },
-      {
-        initialRouteName: isSigned ? "App" : "Sign",
-      }
-    )
-  );
+            {
+                initialRouteName: isSigned ? "App" : "Sign",
+            }
+        )
+    );
