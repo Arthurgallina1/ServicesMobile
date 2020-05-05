@@ -8,12 +8,12 @@ import { store, persistor } from "./src/store";
 import Index from "./src/App";
 
 export default function App() {
-  return (
-    <Provider store={store}>
-      {/* <PersistGate persistor={persistor}> */}
-      <StatusBar barStyle="light-content" backgroundColor="#027d23" />
-      <Index />
-      {/* </PersistGate> */}
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            {/* <PersistGate persistor={persistor}> */}
+            <StatusBar barStyle='light-content' backgroundColor='#04c237' />
+            <Index />
+            {/* </PersistGate> */}
+        </Provider>
+    );
 }
